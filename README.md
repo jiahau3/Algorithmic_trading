@@ -1,4 +1,4 @@
-# The proejct of algorithmic trading
+# Algorithmic trading
 
 
 Example of executing the automation.sh script.
