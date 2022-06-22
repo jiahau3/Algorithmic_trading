@@ -7,8 +7,8 @@ Example of executing the automation.sh script.
 <img src="strategy_demo.PNG" alt="Demo of using strategy script" width="800"/>
 </table>
 Open two terminals. One for receiving data from Binance API. The other is for executing strategies.
-
-Here is the manual of the automation.sh file. It contains keys for activating the corresponding scripts:
+</br>
+The following is the manual of the automation.sh file. It contains keys for activating the corresponding scripts:
 
 Key table:
 - GetLiveData: Run the GetLiveData.py to get live data from Binance API
