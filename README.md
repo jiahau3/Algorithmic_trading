@@ -2,9 +2,10 @@
 
 
 Example of executing the automation.sh script.
+<table>
 <img src="getdata.png" alt="Demo of getting live data" width="400"/>
 <img src="strategy_demo.PNG" alt="Demo of using strategy script" width="600"/>
-
+</table>
 Open two terminals. One for receiving data from Binance API. The other is for executing strategies.
 
 Here is the manual of the automation.sh file. It contains keys for activating the corresponding scripts:
