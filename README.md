@@ -2,8 +2,8 @@
 
 
 Example of executing the automation.sh script.
-<img src="getdata.png" alt="Demo of getting live data" width="300"/>
-<img src="strategy_demo.PNG" alt="Demo of using strategy script" width="300"/>
+<img src="getdata.png" alt="Demo of getting live data" width="400"/>
+<img src="strategy_demo.PNG" alt="Demo of using strategy script" width="600"/>
 
 Open two terminals. One for receiving data from Binance API. The other is for executing strategies.
 
