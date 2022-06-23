@@ -63,6 +63,13 @@ def trendfollowing(entry, lookback, quote_qty, gain, loss, open_position=False):
                     sell_timestamp.append(df_sincebuy.Time[cumret_sincebuy.last_valid_index()])
                     break
 
+def trade_records(buy_timestamp, sell_timestamp):
+    buy_timestamp = pd.DataFrame(buy_timestamp)
+    sell_timestamp = pd.DataFrame(sell_timestamp)
+    buy_timestamp.to_csv('buytime.csv')
+    sell_timestamp.to_csv('selltime.csv')
+    
+
 def show_transcation(df, buy_timestamp, sell_timestamp):
     df = df.set_index('Time')
     plt.figure(figsize=(15,6))
@@ -75,4 +82,5 @@ if __name__=='__main__':
     # Testing for 3 trades
     for i in range(3):
         trendfollowing(0.001, 60, quote_qty=20, gain=0.001, loss=-0.001)
+    trade_records(buy_timestamp, sell_timestamp)
     # show_transcation(pd.read_sql(symbol, engine), buy_timestamp, sell_timestamp)
