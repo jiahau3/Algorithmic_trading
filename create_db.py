@@ -1,4 +1,3 @@
-from matplotlib.pyplot import getp
 import pandas as pd
 from binance.client import Client
 import sqlalchemy
@@ -14,8 +13,8 @@ def getPricedata(symbol: str, kline_interval: str, date: str):
     client = Client()
     df = pd.DataFrame(client.get_historical_klines(symbol, kline_interval, date))
     if len(df) > 0:
-        df = df.iloc[:,:5]
-        df.columns = ['Time', 'Open', 'High', 'Low', 'Close']
+        df = df.iloc[:,[0,1,2,3,4,5,9]]
+        df.columns = ['Time', 'Open', 'High', 'Low', 'Close', 'Volume', 'Taker_buy_volume']
         df.Time = pd.to_datetime(df.Time, unit='ms')
         df = df.set_index('Time')
         df = df.astype(float)
