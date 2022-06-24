@@ -27,7 +27,7 @@ def createDict(symbols):
 def to_database(symbol_price_dict, dbfile: str):
     engine = sqlalchemy.create_engine('sqlite:///' + dbfile)
     for symbol, df in symbol_price_dict.items():
-        df.to_sql(symbol, engine, index=False)
+        df.to_sql(symbol, engine)
     print(f'Data imported to {dbfile}')
     return -1
 
