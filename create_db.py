@@ -2,7 +2,7 @@ import pandas as pd
 from binance.client import Client
 import sqlalchemy
 
-def getSymbolpairs(quote_symbol='BUSD'):
+def getSymbolpairs(quote_symbol):
     client = Client()
     info = client.get_exchange_info()
     # Select the token pairs end with BUSD
@@ -20,18 +20,27 @@ def getPricedata(symbol: str, kline_interval: str, date: str):
         df = df.astype(float)
         return df
 
-def createDict(symbols):
-    symbol_price_dict = {symbol: getPricedata(symbol, '1d', '2021-01-01') for symbol in symbols if getPricedata(symbol, '1d', '2021-01-01') is not None }
-    return symbol_price_dict
+def createDataframe(symbols):
+    symbol_price = {}
+    for symbol in symbols:
+        df = getPricedata(symbol, '1d', '2021-01-01')
+        if df is not None:
+            symbol_price[symbol] = df
+    symbol_price = pd.concat(symbol_price).reset_index()
+    symbol_price = symbol_price.rename(columns={'level_0': 'Symbol'})
+    return symbol_price
 
-def to_database(symbol_price_dict, dbfile: str):
+def to_database(symbol_price, tablename, dbfile: str):
     engine = sqlalchemy.create_engine('sqlite:///' + dbfile)
-    for symbol, df in symbol_price_dict.items():
-        df.to_sql(symbol, engine)
+    symbol_price.to_sql(tablename, engine, index=False)
     print(f'Data imported to {dbfile}')
     return -1
 
+def create_cryptoList():
+    
+    pass
+
 if __name__ == '__main__':
     tokens = getSymbolpairs('BUSD')
-    tokens_price_dict = createDict(tokens)
-    to_database(tokens_price_dict, 'BUSDquote.db')
+    tokens_price = createDataframe(tokens)
+    to_database(tokens_price, 'crypto_price', 'BUSDquote.db')

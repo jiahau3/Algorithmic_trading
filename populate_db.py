@@ -1,0 +1,1 @@
+# The sript is for updating DB
