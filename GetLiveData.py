@@ -6,7 +6,8 @@ import asyncio
 
 symbol1 = 'btcbusd'
 ticker1 = 'miniTicker'
-stream = websockets.connect('wss://stream.binance.com:9443/stream?streams={}@{}'.format(symbol1.lower(), ticker1))
+stream = websockets.connect('wss://stream.binance.com:9443/stream?streams={}@{}'\
+    .format(symbol1.lower(), ticker1))
 dbfile = 'livedata.db'
 engine = sqlalchemy.create_engine('sqlite:///{}'.format(dbfile))
 
