@@ -23,7 +23,7 @@ def getPricedata(symbol: str, kline_interval: str, date: str):
 def createDataframe(symbols):
     symbol_price = {}
     for symbol in symbols:
-        df = getPricedata(symbol, '1d', '2021-01-01')
+        df = getPricedata(symbol, '1d', '2019-01-01')
         if df is not None:
             symbol_price[symbol] = df
     symbol_price = pd.concat(symbol_price).reset_index()
